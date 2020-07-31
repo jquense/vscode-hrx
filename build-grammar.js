@@ -1,6 +1,6 @@
-const fs = require('fs');
-const base = require('./hrx.base.json');
-const pkgJson = require('./package.json');
+const fs = require('fs')
+const base = require('./hrx.base.json')
+const pkgJson = require('./package.json')
 
 const langs = [
   {
@@ -34,9 +34,9 @@ const langs = [
     language: 'css',
   },
   {
-    scope: 'source.css.mcss',
+    scope: 'source.css.scss',
     extension: 'mcss',
-    language: 'mcss',
+    language: 'scss',
   },
   {
     scope: 'source.css.scss',
@@ -47,11 +47,6 @@ const langs = [
     scope: 'source.css.less',
     extension: 'less',
     language: 'less',
-  },
-  {
-    scope: 'text.html.markdown',
-    extension: 'md',
-    language: 'markdown',
   },
   {
     scope: 'text.html.markdown',
@@ -83,18 +78,21 @@ const langs = [
     extension: 'rb',
     language: 'ruby',
   },
-].reverse();
+].reverse()
 
-pkgJson.contributes.grammars[0].embeddedLanguages = {};
-
+pkgJson.contributes.grammars[0].embeddedLanguages = {}
+let id = 0
 for (const { scope, extension, language } of langs) {
-  base.patterns.unshift({ include: `#entry_${language}` });
+  let name = `entry_${language}`
+  if (base.repository[name]) name += `_${++id}`
 
-  const parentScope = `meta.embedded.${language}`;
+  base.patterns.unshift({ include: `#${name}` })
 
-  base.repository[`entry_${language}`] = {
+  const parentScope = `meta.embedded.${language}`
+
+  base.repository[name] = {
     contentName: parentScope,
-    begin: `(\\<=+\\>)\\s*(.+\\.${extension})`,
+    begin: `(\\<=+\\>)\\s*(.+\\.${extension})($|\\s+)`,
     beginCaptures: {
       '1': {
         patterns: [{ include: '#boundary' }],
@@ -105,17 +103,14 @@ for (const { scope, extension, language } of langs) {
     },
     patterns: [{ include: scope }],
     end: '^(?=\\1)',
-  };
+  }
 
-  pkgJson.contributes.grammars[0].embeddedLanguages[parentScope] = language;
+  pkgJson.contributes.grammars[0].embeddedLanguages[parentScope] = language
 }
 
 fs.writeFileSync(
   `${__dirname}/syntaxes/hrx.tmLanguage.json`,
   JSON.stringify(base, null, 2),
-);
+)
 
-fs.writeFileSync(
-  `${__dirname}/package.json`,
-  JSON.stringify(pkgJson, null, 2),
-);
+fs.writeFileSync(`${__dirname}/package.json`, JSON.stringify(pkgJson, null, 2))

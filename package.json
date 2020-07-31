@@ -46,7 +46,6 @@
           "meta.embedded.markdown": "markdown",
           "meta.embedded.less": "less",
           "meta.embedded.scss": "scss",
-          "meta.embedded.mcss": "mcss",
           "meta.embedded.css": "css",
           "meta.embedded.yaml": "yaml",
           "meta.embedded.json": "json",
