@@ -3,6 +3,13 @@
   "displayName": "Human Readable Archive (.hrx) Grammar",
   "description": "A syntax grammar for HRX files, with support for embedded languages",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquense/vscode-hrx"
+  },
+  "scripts": {
+    "build": "node ./build-grammar.js"
+  },
   "engines": {
     "vscode": "^1.47.0"
   },
