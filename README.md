@@ -1,7 +1,8 @@
 # Human Readable Archive (.hrx)
 
-Syntax highlighting for HRX archives. Provides the correct syntax highlingting for each
-virtual file in the acrhive, based on the file extension.
+Syntax highlighting for [HRX archives](https://github.com/google/hrx). Provides
+the correct syntax highlingting for each virtual file in the acrhive,
+based on the file extension.
 
 ## Adding new languages
 
