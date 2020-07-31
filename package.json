@@ -1,0 +1,53 @@
+{
+  "name": "hrx-syntax",
+  "displayName": "Human Readable Archive (.hrx) Grammar",
+  "description": "A syntax grammar for HRX files, with support for embedded languages",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.47.0"
+  },
+  "private": true,
+  "publisher": "monasticpanic",
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "hrx",
+        "aliases": [
+          "HRX",
+          "hrx"
+        ],
+        "extensions": [
+          ".hrx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hrx",
+        "scopeName": "source.hrx",
+        "path": "./syntaxes/hrx.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.ruby": "ruby",
+          "meta.embedded.java": "java",
+          "meta.embedded.csharp": "csharp",
+          "meta.embedded.python": "python",
+          "meta.embedded.markdownreact": "markdownreact",
+          "meta.embedded.markdown": "markdown",
+          "meta.embedded.less": "less",
+          "meta.embedded.scss": "scss",
+          "meta.embedded.mcss": "mcss",
+          "meta.embedded.css": "css",
+          "meta.embedded.yaml": "yaml",
+          "meta.embedded.json": "json",
+          "meta.embedded.javascriptreact": "javascriptreact",
+          "meta.embedded.typescript": "typescript",
+          "meta.embedded.typescriptreact": "typescriptreact"
+        }
+      }
+    ]
+  }
+}

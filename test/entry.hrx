@@ -1,0 +1,52 @@
+<===> foo.tsx
+const Foo = {}
+<foo />;
+<===> foo.jsx
+const Foo = {}
+<foo />;
+<===> foo.ts
+const Foo = <string>{};
+
+<===> foo.js
+const Foo = {}
+<foo />;
+<===> foo.css
+
+.rule {
+  color: red
+}
+<===> foo.less
+
+.rule {
+  color: red
+}
+<===> foo.scss
+
+.rule {
+  color: red
+}
+<===> foo.md
+## Hi `there`
+_fo_
+<===> foo.cs
+Class Foo {
+  Foo() {}
+}
+<===>
+================================================================================
+<===> foo/ fsa/foo.cs
+Class Foo {
+  Foo() {}
+}
+<===> foo.rb
+cities  = %w[ London
+              Oslo
+              Paris
+              Amsterdam
+              Berlin ]
+visited = %w[Berlin Oslo]
+
+puts "I still need " +
+     "to visit the " +
+     "following cities:",
+     cities - visited

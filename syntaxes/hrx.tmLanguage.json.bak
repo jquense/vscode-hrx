@@ -1,0 +1,93 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HRX",
+  "scopeName": "source.hrx",
+  "patterns": [
+    { "include": "#entry_tsx" },
+    { "include": "#entry_ts" },
+    { "include": "#entry_basic" },
+    { "include": "#comment" },
+    { "include": "#boundary" }
+  ],
+  "repository": {
+    "boundary": {
+      "name": "keyword.control.boundary.hrx",
+      "match": "\\<=+\\>"
+    },
+    "file": {
+      "match": "\\b.+\\b",
+      "name": "string.file.hrx"
+    },
+    "comment": {
+      "contentName": "comment.hrx",
+      "begin": "(\\<=+\\>)\\s*",
+      "beginCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        }
+      },
+      "end": "(\\<=+\\>)",
+      "endCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        }
+      }
+    },
+    "entry_basic": {
+      "contentName": "other.basic.hrx",
+      "begin": "(\\<=+\\>)\\s*(.+)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        },
+        "2": {
+          "patterns": [{ "include": "#file" }]
+        }
+      },
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [{ "include": "#keyword" }]
+        }
+      }
+    },
+    "entry_tsx": {
+      "contentName": "meta.embedded.tsx",
+      "begin": "(\\<=+\\>)\\s*(.+\\.tsx)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        },
+        "2": {
+          "patterns": [{ "include": "#file" }]
+        }
+      },
+      "patterns": [{ "include": "source.tsx" }],
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [{ "include": "#keyword" }]
+        }
+      }
+    },
+    "entry_ts": {
+      "contentName": "meta.embedded.ts",
+      "begin": "(\\<=+\\>)\\s*(.+\\.ts)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        },
+        "2": {
+          "patterns": [{ "include": "#file" }]
+        }
+      },
+      "patterns": [{ "include": "source.ts" }],
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [{ "include": "#keyword" }]
+        }
+      }
+    }
+  }
+}

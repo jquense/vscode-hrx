@@ -1,0 +1,517 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HRX",
+  "scopeName": "source.hrx",
+  "patterns": [
+    {
+      "include": "#entry_typescriptreact"
+    },
+    {
+      "include": "#entry_typescript"
+    },
+    {
+      "include": "#entry_javascriptreact"
+    },
+    {
+      "include": "#entry_json"
+    },
+    {
+      "include": "#entry_yaml"
+    },
+    {
+      "include": "#entry_css"
+    },
+    {
+      "include": "#entry_mcss"
+    },
+    {
+      "include": "#entry_scss"
+    },
+    {
+      "include": "#entry_less"
+    },
+    {
+      "include": "#entry_markdown"
+    },
+    {
+      "include": "#entry_markdown"
+    },
+    {
+      "include": "#entry_markdownreact"
+    },
+    {
+      "include": "#entry_python"
+    },
+    {
+      "include": "#entry_csharp"
+    },
+    {
+      "include": "#entry_java"
+    },
+    {
+      "include": "#entry_ruby"
+    },
+    {
+      "include": "#entry_basic"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#boundary"
+    }
+  ],
+  "repository": {
+    "boundary": {
+      "name": "punctuation.definition.block.boundary.hrx",
+      "match": "\\<=+\\>"
+    },
+    "file": {
+      "match": "\\b.+\\b",
+      "name": "string.file.hrx"
+    },
+    "comment": {
+      "contentName": "comment.hrx",
+      "begin": "(\\<=+\\>)\\s*",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        }
+      },
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        }
+      }
+    },
+    "entry_basic": {
+      "contentName": "other.basic.hrx",
+      "begin": "(\\<=+\\>)\\s*(.+)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#keyword"
+            }
+          ]
+        }
+      }
+    },
+    "entry_ruby": {
+      "contentName": "meta.embedded.ruby",
+      "begin": "(\\<=+\\>)\\s*(.+\\.rb)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ruby"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_java": {
+      "contentName": "meta.embedded.java",
+      "begin": "(\\<=+\\>)\\s*(.+\\.java)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.java"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_csharp": {
+      "contentName": "meta.embedded.csharp",
+      "begin": "(\\<=+\\>)\\s*(.+\\.cs)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.cs"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_python": {
+      "contentName": "meta.embedded.python",
+      "begin": "(\\<=+\\>)\\s*(.+\\.py)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.python"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_markdownreact": {
+      "contentName": "meta.embedded.markdownreact",
+      "begin": "(\\<=+\\>)\\s*(.+\\.mdx)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.html.markdown,jsx"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_markdown": {
+      "contentName": "meta.embedded.markdown",
+      "begin": "(\\<=+\\>)\\s*(.+\\.md)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "text.html.markdown"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_less": {
+      "contentName": "meta.embedded.less",
+      "begin": "(\\<=+\\>)\\s*(.+\\.less)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css.less"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_scss": {
+      "contentName": "meta.embedded.scss",
+      "begin": "(\\<=+\\>)\\s*(.+\\.s(a|c)ss)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css.scss"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_mcss": {
+      "contentName": "meta.embedded.mcss",
+      "begin": "(\\<=+\\>)\\s*(.+\\.mcss)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css.mcss"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_css": {
+      "contentName": "meta.embedded.css",
+      "begin": "(\\<=+\\>)\\s*(.+\\.css)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.css"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_yaml": {
+      "contentName": "meta.embedded.yaml",
+      "begin": "(\\<=+\\>)\\s*(.+\\.ya?ml)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.yaml"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_json": {
+      "contentName": "meta.embedded.json",
+      "begin": "(\\<=+\\>)\\s*(.+\\.json)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.json"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_javascriptreact": {
+      "contentName": "meta.embedded.javascriptreact",
+      "begin": "(\\<=+\\>)\\s*(.+\\.m?jsx?)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.js"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_typescript": {
+      "contentName": "meta.embedded.typescript",
+      "begin": "(\\<=+\\>)\\s*(.+\\.ts)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.ts"
+        }
+      ],
+      "end": "^(?=\\1)"
+    },
+    "entry_typescriptreact": {
+      "contentName": "meta.embedded.typescriptreact",
+      "begin": "(\\<=+\\>)\\s*(.+\\.tsx)",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#boundary"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "include": "#file"
+            }
+          ]
+        }
+      },
+      "patterns": [
+        {
+          "include": "source.tsx"
+        }
+      ],
+      "end": "^(?=\\1)"
+    }
+  }
+}

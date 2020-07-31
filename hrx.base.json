@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "HRX",
+  "scopeName": "source.hrx",
+  "patterns": [
+    { "include": "#entry_basic" },
+    { "include": "#comment" },
+    { "include": "#boundary" }
+  ],
+  "repository": {
+    "boundary": {
+      "name": "punctuation.definition.block.boundary.hrx",
+      "match": "\\<=+\\>"
+    },
+    "file": {
+      "match": "\\b.+\\b",
+      "name": "string.file.hrx"
+    },
+    "comment": {
+      "contentName": "comment.hrx",
+      "begin": "(\\<=+\\>)\\s*",
+      "beginCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        }
+      },
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": {
+          "patterns": [{ "include": "#boundary" }]
+        }
+      }
+    },
+    "entry_basic": {
+      "contentName": "other.basic.hrx",
+      "begin": "(\\<=+\\>)\\s*(.+)",
+      "beginCaptures": {
+        "1": { "patterns": [{ "include": "#boundary" }] },
+        "2": { "patterns": [{ "include": "#file" }] }
+      },
+      "end": "^(?=\\1)",
+      "endCaptures": {
+        "1": { "patterns": [{ "include": "#keyword" }] }
+      }
+    }
+  }
+}
